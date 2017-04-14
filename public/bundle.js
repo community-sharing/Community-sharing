@@ -27590,6 +27590,8 @@
 	
 	var _actions = __webpack_require__(257);
 	
+	var _reactRouterDom = __webpack_require__(218);
+	
 	var _NavigationMenu = __webpack_require__(258);
 	
 	var _NavigationMenu2 = _interopRequireDefault(_NavigationMenu);
@@ -27611,18 +27613,34 @@
 	        _react2.default.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
 	      ),
 	      _react2.default.createElement(
-	        'div',
-	        { className: 'title-container' },
+	        _reactRouterDom.HashRouter,
+	        null,
 	        _react2.default.createElement(
-	          'h2',
+	          'div',
 	          null,
-	          'Community Sharing'
+	          _react2.default.createElement(
+	            _reactRouterDom.Link,
+	            { to: '/' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'title-container' },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                'Community Sharing'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactRouterDom.Link,
+	            { to: '/login' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'login-button-container' },
+	              _react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' })
+	            )
+	          )
 	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'login-button-container' },
-	        _react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' })
 	      )
 	    ),
 	    props.menuState ? _react2.default.createElement(_NavigationMenu2.default, null) : ""

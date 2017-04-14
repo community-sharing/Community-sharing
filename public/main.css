@@ -69,6 +69,10 @@ ul{
   line-height: 0.8em;
 }
 
+.link-div a {
+  background-color: red;
+}
+
 .login-button-container{
   width: 5em;
   height: 100%;
