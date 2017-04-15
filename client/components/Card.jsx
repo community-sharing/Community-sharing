@@ -15,7 +15,7 @@ function Card () {
         </div>
       </div>
       <div className='card-button-container'>
-        <Link to="order"><button className='card-button'>More</button></Link>
+        <Link to="/order"><button className='card-button'>More</button></Link>
       </div>
     </div>
   )

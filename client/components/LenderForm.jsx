@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { getNewItem } from '../api'
 
 let LenderForm = (props) => (
@@ -10,7 +12,9 @@ let LenderForm = (props) => (
       <label>Description</label><input type="text" name="description" />
       <label>Location</label><input type="text" name="location" />
       <label>Image Upload</label><input type="file" name="image_url" accept="image/*" /><br />
-      <input className="createListing" type="submit" value="Create Listing" />
+      <Link to="list-item">
+        <input className="createListing" type="submit" value="Create Listing" />
+      </Link>
     </form>
   </div>
 )
@@ -28,7 +32,7 @@ function newItem(event) {
 }
 
 function testCallback (err, status) {
- console.log(status);  
+ console.log(status);
 }
 
 export default LenderForm
