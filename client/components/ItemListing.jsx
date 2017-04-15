@@ -1,18 +1,21 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 function ItemListing (props) {
   return (
 
     <div className="ItemListing">
       <div>
-        <h1 className="itemTitle">Item Title</h1>
+        <h1 className="itemTitle">{props.item.item_name}</h1>
         <img className="itemListingImage" src="http://static.musiciansfriend.com/derivates/18/001/446/174/DV016_Jpg_Large_518963.019_cherry_body_closeup.jpg" />
-        <p>Item description goes here... blah blah blah...  blah blah blah...  blah blah blah...  blah blah blah...  blah blah blah... blah blah blah...  blah blah blah...  blah blah blah...  blah blah blah...  blah blah blah...</p>
+        <p>
+          {props.item.description}
+        </p>
       </div>
       <div className="itemListingUserDetails">
         <img className="itemListingUserPhoto" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" />
         <h2>Lender Name</h2>
-        <h3>Lender Location</h3>
+        <h3>{props.item.location}</h3>
       </div>
       <form className="requestForm" action="/action_page.php">
         <p>
@@ -24,4 +27,10 @@ function ItemListing (props) {
 
 )}
 
-export default ItemListing
+function mapStateToProps(state){
+  return {
+    item: state.singleItem
+  }
+}
+
+export default connect(mapStateToProps)(ItemListing)

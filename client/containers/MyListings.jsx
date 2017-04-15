@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Card from '../components/Card'
+import MyListingsCard from '../components/MyListingsCard'
 
 function MyListings () {
   return (
     <div className='dashboard-section'>
       MY LISTINGS
-      <Card />
+      <MyListingsCard />
 
     </div>
   )
