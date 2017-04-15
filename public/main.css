@@ -280,7 +280,6 @@ label {
   text-align: center
 }
 
-
 .itemListingImage {
   width: 100%;
 }
@@ -309,9 +308,21 @@ label {
   text-align: center;
 }
 
-.requestForm input {
+/*.requestForm input {
   margin-top: 5%;
   margin-bottom: 5%;
+}*/
+
+.requestForm input[type=submit] {
+  margin-top: 1em;
+  background-color: #4CAF50;
+  color: white;
+  width: 90%;
+  padding: 12px 20px;
+  margin: 0.5em auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /* --- LOGIN ---- */

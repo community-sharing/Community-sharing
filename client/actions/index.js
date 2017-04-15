@@ -1,11 +1,9 @@
 import request from 'superagent'
 const url = require('url')
+
 const config = require('../../config')
 
 var urlPath = url.format(config)
-
-
-
 var currentMenuState = false
 
 export const menuNavigation = () => {
@@ -14,7 +12,6 @@ export const menuNavigation = () => {
   }else{
     currentMenuState = false
   }
-
   return {
     type: 'MENU_STATE',
     menuState: currentMenuState
