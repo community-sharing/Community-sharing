@@ -5,12 +5,12 @@ const HomePage = () => (
     <div className="homepage">
       <Link to="/list">
         <div className="borrow-div">
-          <p className="borrow-p">IM HERE TO BORROW</p>
+          <br /><p className="borrow-p">IM HERE TO BORROW</p>
         </div>
       </Link>
       <Link to="/lender-form">
         <div className="lend-div">
-          <p className="lend-p">IM HERE TO LEND</p>
+          <br /><p className="lend-p">IM HERE TO LEND</p>
         </div>
       </Link>
     </div>

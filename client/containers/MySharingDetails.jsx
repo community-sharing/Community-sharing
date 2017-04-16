@@ -1,7 +1,7 @@
 import React from 'react'
 
 import MyListings from './MyListings.jsx'
-import ImBorrowing from './ImBorrowing.jsx'
+import MyBorrowing from './MyBorrowing.jsx'
 import MySharedItems from './MySharedItems.jsx'
 
 
@@ -9,7 +9,7 @@ function MySharingDetails () {
   return (
     <div>
       <MyListings />
-      <ImBorrowing />
+      <MyBorrowing />
       <MySharedItems />
     </div>
   )

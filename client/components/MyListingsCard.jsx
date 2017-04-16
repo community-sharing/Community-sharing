@@ -15,7 +15,7 @@ function MyListingsCard () {
         </div>
       </div>
       <div className='card-button-container'>
-        <Link to="/list-item"><button className='card-button'>View</button></Link>
+        <button className='card-button'>View</button>
       </div>
     </div>
   )
