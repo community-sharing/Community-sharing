@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Card () {
+function MyBorrowedCard () {
   return (
     <div className='card-wrapper'>
       <div className='card-container'>
@@ -10,7 +10,7 @@ function Card () {
         <div className='card-details-container'>
           <p className='card-heading'>Mower</p>
           <p className='card-details'>
-            Lorem ipsum dolor sit amet, nibh molestie an eos, cu prima error quo, pro eros munere efficiendi in. Vis in eros pertinax voluptatibus....
+            Lorem ipsum dolor sit amet, nibh molestie an eos, cu prima error quo, pro eros munere efficiendi in. Vis in eros pertinax voluptatibus...
           </p>
         </div>
       </div>
@@ -21,4 +21,4 @@ function Card () {
   )
 }
 
-export default Card
+export default MyBorrowedCard

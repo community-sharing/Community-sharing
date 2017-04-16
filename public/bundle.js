@@ -23821,6 +23821,10 @@
 	
 	var _loggedInUserDetails2 = _interopRequireDefault(_loggedInUserDetails);
 	
+	var _borrowedItemsState = __webpack_require__(297);
+	
+	var _borrowedItemsState2 = _interopRequireDefault(_borrowedItemsState);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = (0, _redux.combineReducers)({
@@ -23829,7 +23833,8 @@
 	  initialListings: _allListings2.default,
 	  filteredListings: _filteredListings2.default,
 	  singleItem: _singleItem2.default,
-	  loggedInUserDetails: _loggedInUserDetails2.default
+	  loggedInUserDetails: _loggedInUserDetails2.default,
+	  borrowedItemsState: _borrowedItemsState2.default
 	});
 
 /***/ }),
@@ -27791,7 +27796,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.fetchUser = exports.loggedInUser = exports.displaySingleItem = exports.filteredListings = exports.initialListings = exports.dashboardTab = exports.menuNavigation = undefined;
+	exports.fetchBorrowedItems = exports.borrowedItems = exports.fetchUser = exports.loggedInUser = exports.displaySingleItem = exports.filteredListings = exports.initialListings = exports.dashboardTab = exports.menuNavigation = undefined;
 	
 	var _superagent = __webpack_require__(262);
 	
@@ -27800,10 +27805,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var url = __webpack_require__(270);
+	
 	var config = __webpack_require__(277);
 	
 	var urlPath = url.format(config);
-	
 	var currentMenuState = false;
 	
 	var menuNavigation = exports.menuNavigation = function menuNavigation() {
@@ -27812,7 +27817,6 @@
 	  } else {
 	    currentMenuState = false;
 	  }
-	
 	  return {
 	    type: 'MENU_STATE',
 	    menuState: currentMenuState
@@ -27862,6 +27866,25 @@
 	        return;
 	      }
 	      dispatch(loggedInUser(res.body[0]));
+	    });
+	  };
+	};
+	
+	var borrowedItems = exports.borrowedItems = function borrowedItems(borrowedItemList) {
+	  return {
+	    type: 'BORROWED_ITEMS',
+	    borrowedItemList: borrowedItemList
+	  };
+	};
+	
+	var fetchBorrowedItems = exports.fetchBorrowedItems = function fetchBorrowedItems(loggedInUserId) {
+	  return function (dispatch) {
+	    _superagent2.default.get(urlPath + "/borrowedItems/" + loggedInUserId).end(err, function (res) {
+	      if (err) {
+	        console.error(err.message);
+	        return;
+	      }
+	      dispatch(borrowedItems(res.body));
 	    });
 	  };
 	};
@@ -31365,34 +31388,18 @@
 	        _react2.default.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
 	      ),
 	      _react2.default.createElement(
-	        _reactRouterDom.HashRouter,
-	        null,
+	        'div',
+	        { className: 'title-container' },
 	        _react2.default.createElement(
-	          'div',
+	          'h2',
 	          null,
-	          _react2.default.createElement(
-	            _reactRouterDom.Link,
-	            { to: '/' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'title-container' },
-	              _react2.default.createElement(
-	                'h2',
-	                null,
-	                'Community Sharing'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactRouterDom.Link,
-	            { to: '/login' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'login-button-container' },
-	              _react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' })
-	            )
-	          )
+	          'Community Sharing'
 	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'login-button-container' },
+	        _react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' })
 	      )
 	    ),
 	    props.menuState ? _react2.default.createElement(_NavigationMenu2.default, null) : ""
@@ -31738,9 +31745,9 @@
 	
 	var _MyListings2 = _interopRequireDefault(_MyListings);
 	
-	var _ImBorrowing = __webpack_require__(286);
+	var _MyBorrowing = __webpack_require__(296);
 	
-	var _ImBorrowing2 = _interopRequireDefault(_ImBorrowing);
+	var _MyBorrowing2 = _interopRequireDefault(_MyBorrowing);
 	
 	var _MySharedItems = __webpack_require__(288);
 	
@@ -31753,7 +31760,7 @@
 	    'div',
 	    null,
 	    _react2.default.createElement(_MyListings2.default, null),
-	    _react2.default.createElement(_ImBorrowing2.default, null),
+	    _react2.default.createElement(_MyBorrowing2.default, null),
 	    _react2.default.createElement(_MySharedItems2.default, null)
 	  );
 	}
@@ -31847,37 +31854,7 @@
 	exports.default = MyListingsCard;
 
 /***/ }),
-/* 286 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Card = __webpack_require__(287);
-	
-	var _Card2 = _interopRequireDefault(_Card);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function MyBorrowing() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'dashboard-section' },
-	    'IM BORROWING',
-	    _react2.default.createElement(_Card2.default, null)
-	  );
-	}
-	
-	exports.default = MyBorrowing;
-
-/***/ }),
+/* 286 */,
 /* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31895,7 +31872,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function Card() {
+	function MyBorrowedCard() {
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'card-wrapper' },
@@ -31914,7 +31891,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'card-details' },
-	          'Lorem ipsum dolor sit amet, nibh molestie an eos, cu prima error quo, pro eros munere efficiendi in. Vis in eros pertinax voluptatibus....'
+	          'Lorem ipsum dolor sit amet, nibh molestie an eos, cu prima error quo, pro eros munere efficiendi in. Vis in eros pertinax voluptatibus...'
 	        )
 	      )
 	    ),
@@ -31934,7 +31911,7 @@
 	  );
 	}
 	
-	exports.default = Card;
+	exports.default = MyBorrowedCard;
 
 /***/ }),
 /* 288 */
@@ -32544,6 +32521,73 @@
 	}
 	
 	exports.default = LenderForm;
+
+/***/ }),
+/* 296 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(182);
+	
+	var _actions = __webpack_require__(261);
+	
+	var _MyBorrowedCard = __webpack_require__(287);
+	
+	var _MyBorrowedCard2 = _interopRequireDefault(_MyBorrowedCard);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function MyBorrowing(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'dashboard-section' },
+	    'IM BORROWING',
+	    _react2.default.createElement(_MyBorrowedCard2.default, null)
+	  );
+	}
+	
+	function mapStateToProps(state) {
+	  console.log(state.borrowedItemsState);
+	  return {
+	    dispatch: state.dispatch,
+	    borrowedItemsList: state.borrowedItemsState
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MyBorrowing);
+
+/***/ }),
+/* 297 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var borrowedItemsState = function borrowedItemsState() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['test borrowed item state'];
+	  var action = arguments[1];
+	
+	  switch (action.type) {
+	    case 'BORROWED_ITEMS':
+	      return action.borrowedItemList;
+	
+	    default:
+	      return state;
+	  }
+	};
+	
+	exports.default = borrowedItemsState;
 
 /***/ })
 /******/ ]);
