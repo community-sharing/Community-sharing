@@ -21,7 +21,6 @@ const loggedInUserDetails = (state = defaultUser, action) => {
     default:
       return state
   }
-  console.log(state);
 }
 
 export default loggedInUserDetails

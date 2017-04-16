@@ -14,6 +14,7 @@ var borrowedItems = require('./routes/borrowedItems')
 var saveItem = require('./routes/saveItem')
 var saveUser = require('./routes/saveUser')
 var deleteItem = require('./routes/deleteItem')
+var loanRequest = require('./routes/loanRequest')
 
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true }))
@@ -29,5 +30,6 @@ server.use('/borrowedItems', borrowedItems)
 server.use('/saveItem', saveItem)
 server.use('/saveUser', saveUser)
 server.use('/deleteItem', deleteItem)
+server.use('/loanRequest', loanRequest)
 
 module.exports = server
