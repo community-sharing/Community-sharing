@@ -32237,6 +32237,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function SharedCard(props) {
+	  console.log(props);
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'card-wrapper' },
@@ -32253,7 +32254,7 @@
 	          'You'
 	        ),
 	        ' are sharing your ',
-	        props.description,
+	        props.item_name,
 	        ' with ',
 	        _react2.default.createElement(
 	          'span',
