@@ -565,6 +565,36 @@ login-button-container {
   background-color: #21D084;
 }
 
+#login-error-message{
+  color: red;
+}
+
+/* --- LOGIN WELCOME --- */
+
+.login-welcome-container{
+  width: 90%;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.login-welcome-container button{
+  margin-top: 1em;
+  background-color: #21D084;
+  color: white;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 0.5em auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-welcome-container img {
+  margin-top: 2em;
+  width: 100%;
+  display: block
+}
+
 /* --- REGISTER ---- */
 
 .register {

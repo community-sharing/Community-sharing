@@ -5,12 +5,9 @@ import { fetchBorrowedItems } from '../actions'
 
 import BorrowedItemCard from '../components/BorrowedItemCard'
 
+var toggleMyItems = true
+
 class MyBorrowedItems extends React.Component {
-
-  componentDidMount () {
-    this.props.dispatch(fetchBorrowedItems(this.props.loggedInUserId))
-  }
-
   constructor () {
     super()
     this.state = { toggleMyItems: true }
@@ -20,19 +17,22 @@ class MyBorrowedItems extends React.Component {
     this.setState({ toggleMyItems: !this.state.toggleMyItems })
   }
 
+  componentDidMount () {
+    this.props.dispatch(fetchBorrowedItems(this.props.loggedInUserId))
+  }
   render () {
     return (
       <div className='dashboard-container'>
-        <h4 onClick={() => this.toggleItemView()}> My Borrowed Items <i className='fa fa-arrow-down' aria-hidden='true' /> </h4>
-        { this.state.toggleMyItems ? myItems(this.props.borrowedItemsList, this.props.loggedInUserId) : '' }
+        <h4 onClick={() => this.toggleItemView()}>My Borrowed Items<i className='fa fa-arrow-down' aria-hidden='true' /></h4>
+        {this.state.toggleMyItems ? myItems(this.props.borrowedItemsList, this.props.loggedInUserId) : ''}
       </div>
     )
   }
 }
 
-function myItems (borrowedItems, loggedInUserId) {
+function myItems (borrowedItems, user_id) {
   return borrowedItems.map((borrowedItem) => {
-    if (borrowedItem.owner_id !== loggedInUserId) {
+    if (borrowedItem.owner_id != user_id) {
       return (
         <BorrowedItemCard key={borrowedItem.loan_id} {...borrowedItem} />
       )

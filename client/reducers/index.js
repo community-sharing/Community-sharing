@@ -12,6 +12,8 @@ import borrowedItemsState from './borrowedItemsState'
 import lenderDetails from './lenderDetails'
 import borrowerDetails from './borrowerDetails'
 import menuVisableState from './menuVisableState'
+import isLoggedIn from './isLoggedIn'
+import loginFailed from './loginFailed'
 
 export default combineReducers({
   menuState,
@@ -25,5 +27,7 @@ export default combineReducers({
   borrowedItemsState,
   lenderDetails,
   borrowerDetails,
-  menuVisableState
+  menuVisableState,
+  isLoggedIn,
+  loginFailed
 })

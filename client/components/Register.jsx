@@ -1,12 +1,11 @@
 import React from 'react'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
-import { HashRouter as Router, Link } from 'react-router-dom'
+
+import { registerNewUser } from './component_functions/registerNewUser'
 
 const CLOUDINARY_UPLOAD_PRESET = 'm7lw5icy'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/hpyyiawap/image/upload'
-
-import { registerUser } from '../api'
 
 class Register extends React.Component {
   constructor (props) {
@@ -48,7 +47,7 @@ class Register extends React.Component {
   render () {
     return (
       <div className='login'>
-        <img src='http://res.cloudinary.com/hpyyiawap/image/upload/v1492507853/community_bxaesr.png' />
+        <img src='http://res.cloudinary.com/hpyyiawap/image/upload/v1495587527/community_mjarck.png' />
         <div className='register'>
           <h1>Register</h1>
           <form onSubmit={registerNewUser} method='post'>
@@ -62,60 +61,30 @@ class Register extends React.Component {
             <label>Phone Number: </label><input type='text' name='phone' />
             <label>Password: </label><input type='password' name='hash' />
             <label>Profile Picture</label><input type='text' name='user_image_url' readOnly='readonly' value={this.state.uploadedFileCloudinaryUrl} /><br />
+
             <div className='imageButtonAndDisplay'>
               <Dropzone className='dropzone'
                 onDrop={this.onImageDrop.bind(this)}
                 multiple={false}
                 accept='image/*'>
-                <div className='uploadButton'>Drop an image or click to select a file to upload.</div>
+                <div className='uploadButton'>
+                  Drop an image or click to select a file to upload.
+                </div>
               </Dropzone>
 
               <div className='imageContainer'>
-                {
-                      this.state.uploadedFileCloudinaryUrl === ''
-                        ? null
-                        : (
-                          <div>
-                            <img className='uploadImage' src={this.state.uploadedFileCloudinaryUrl} />
-                          </div>
-                        )
-                      }
+                { this.state.uploadedFileCloudinaryUrl === '' ? null : (
+                  <div>
+                    <img className='uploadImage' src={this.state.uploadedFileCloudinaryUrl} />
+                  </div>
+                )}
               </div>
             </div>
-            <Router>
-              <Link to='/login'>
-                <input type='submit' className='itemListingSubmit' value='Register' />
-              </Link>
-            </Router>
+            <input type='submit' className='itemListingSubmit' value='Register' />
           </form>
         </div>
       </div>
     )
-  }
-}
-
-function registerNewUser (event) {
-  console.log(event)
-  event.preventDefault(event)
-  var formData = {
-    fname: event.target.elements.fname.value,
-    lname: event.target.elements.lname.value,
-    email: event.target.elements.email.value,
-    address: event.target.elements.address.value,
-    suburb: event.target.elements.suburb.value,
-    town_city: event.target.elements.city.value,
-    postcode: event.target.elements.postcode.value,
-    phone: event.target.elements.phone.value,
-    user_image_url: event.target.elements.user_image_url.value
-  }
-  registerUser(testCallback, formData)
-}
-
-function testCallback (err, status) {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log(status)
   }
 }
 
