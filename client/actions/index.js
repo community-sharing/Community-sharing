@@ -4,20 +4,7 @@ const url = require('url')
 const config = require('../../config')
 
 var urlPath = url.format(config)
-var currentMenuState = false
 var menuVisableState = false
-
-export const menuNavigation = () => {
-  if (currentMenuState === false) {
-    currentMenuState = true
-  } else {
-    currentMenuState = false
-  }
-  return {
-    type: 'MENU_STATE',
-    menuState: currentMenuState
-  }
-}
 
 export const menuVisable = () => {
   if (menuVisableState === false) {
@@ -66,16 +53,33 @@ export const loggedInUser = loggedInUserDetails => {
   }
 }
 
-export const fetchUser = submitedEmail => {
+export const userLoggedIn = isLoggedIn => {
+  return {
+    type: 'USER_LOGGED_IN',
+    isLoggedIn
+  }
+}
+
+export const loginFailed = loginFailed => {
+  return {
+    type: 'LOGIN_FAILED',
+    loginFailed
+  }
+}
+
+export const loginUser = submitedEmail => {
   return dispatch => {
     request.get(urlPath + '/user/' + submitedEmail).end((err, res) => {
-      if (err) {
-        console.error('fetchUser ' + err.message)
+      if (res.body[0] === undefined) {
+        dispatch(loginFailed(true))
         return
+      } else {
+        dispatch(loginFailed(false))
+        dispatch(userLoggedIn(true))
+        dispatch(loggedInUser(res.body[0]))
+        dispatch(fetchLoanedItems(res.body[0].user_id))
+        dispatch(fetchBorrowedItems(res.body[0].user_id))
       }
-      dispatch(loggedInUser(res.body[0]))
-      dispatch(fetchLoanedItems(res.body[0].user_id))
-      dispatch(fetchBorrowedItems(res.body[0].user_id))
     })
   }
 }

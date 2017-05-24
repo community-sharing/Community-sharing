@@ -1,6 +1,6 @@
 # Community-Sharing
 
-You'll fins us online @ https://community-sharing.herokuapp.com/#/
+You'll find us online @ https://community-sharing.herokuapp.com/#/
 
 ## Getting started
 
@@ -14,6 +14,20 @@ npm run knex seed:run
 ```
 
 **To start the server, run `npm run dev`, and go to http://localhost:3000/**
+
+## Issues and New Features
+
+Issue/Feature     | Description                         | Owner | Complete 
+------------------|-------------------------------------|-------|------------
+Login Image       | image not available                 |       |           
+Registration      | not registering new users           |       |           
+Search 1          | link search and category            |       |           
+Search 2          | refresh on search clear             |       |           
+Pending Request   | seperate pending & accepted         |       |           
+Lending Complete  | A way to complete loan              |       |           
+Navigation        | Back button on selected components  |       |           
+Testing           | Frontend                            |       |           
+Testing           | Backend                             |       |           
 
 ## Planning
 
