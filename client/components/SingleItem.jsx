@@ -35,6 +35,11 @@ class SingleItem extends React.Component {
             </Link>
           </Router>
         </form>
+        <div className="back-button">
+          <Router>
+            <Link to='/list-all'>Back to listings</Link>
+          </Router>
+        </div>
       </div>
     )
   }

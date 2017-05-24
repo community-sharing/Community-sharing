@@ -38152,6 +38152,19 @@
 	                } })
 	            )
 	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'back-button' },
+	          _react2.default.createElement(
+	            _reactRouterDom.HashRouter,
+	            null,
+	            _react2.default.createElement(
+	              _reactRouterDom.Link,
+	              { to: '/list-all' },
+	              'Back to listings'
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -38545,6 +38558,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function List(props) {
+	
+	  window.scrollTo(0, 0);
+	
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'List' },
