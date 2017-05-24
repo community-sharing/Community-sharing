@@ -17,7 +17,7 @@ npm run knex seed:run
 
 ## Issues and New Features
 
-Issue/Feature     | Description                         | Owner | Complete |
+Issue/Feature     | Description                         | Owner | Complete 
 ----------------------------------------------------------------------------|
 Login Image       | image not available                 |       |           
 Registration      | not registering new users           |       |           
