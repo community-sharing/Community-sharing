@@ -6,7 +6,7 @@ import { fetchUser } from '../actions'
 
 let Login = (props) => (
   <div className='login'>
-    <img src='http://res.cloudinary.com/hpyyiawap/image/upload/v1492507853/community_bxaesr.png' />
+    <img src='http://res.cloudinary.com/hpyyiawap/image/upload/v1495587527/community_mjarck.png' />
     <div className='LoginGreeting'>
       Welcome to Community Sharing. <br /> Please sign in below.
     </div>
