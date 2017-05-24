@@ -18,7 +18,7 @@ npm run knex seed:run
 ## Issues and New Features
 
 Issue/Feature     | Description                         | Owner | Complete 
-----------------------------------------------------------------------------|
+------------------|-------------------------------------|-------|------------
 Login Image       | image not available                 |       |           
 Registration      | not registering new users           |       |           
 Search 1          | link search and category            |       |           
@@ -28,7 +28,7 @@ Lending Complete  | A way to complete loan              |       |
 Navigation        | Back button on selected components  |       |           
 Testing           | Frontend                            |       |           
 Testing           | Backend                             |       |           
-----------------------------------------------------------------------------|
+------------------|-------------------------------------|-------|-----------|
 ## Planning
 
 ![alt tag](https://github.com/community-sharing/Community-sharing/blob/master/pictures/Brainstorm.jpg)
