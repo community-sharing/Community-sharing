@@ -5,6 +5,7 @@ var db = require('../db')
 
 router.get('/:searchString', function (req, res) {
   var searchString = req.params.searchString
+  console.log(searchString)
   db.getSearchItems(searchString).then((result) => {
     res.send(result)
   })

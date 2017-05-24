@@ -15,7 +15,7 @@ function List (props) {
       </div>
 
       <div className='category-dropdown'>
-        <select selected='All' name='category' onChange={(e) => changeEventHandler(e, props.dispatch, props.initialListings)}>
+        <select id='category-input' selected='All' name='category' onChange={(e) => changeEventHandler(e, props.dispatch, props.initialListings)}>
           <option value='All'>All</option>
           <option value='Tools'>Tools</option>
           <option value='Musical Instruments'>Musical Instruments</option>
@@ -47,7 +47,7 @@ function mapStateToProps (state) {
 }
 
 function search (dispatch) {
-  dispatch(searchForItem(document.getElementById('search-input').value))
+  dispatch(searchForItem(document.getElementById('search-input').value, document.getElementById('category-input').value))
 }
 
 function filterList (dispatch, allListings, category) {

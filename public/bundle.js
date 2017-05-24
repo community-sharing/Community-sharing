@@ -28365,9 +28365,10 @@
 	  };
 	};
 	
-	var searchForItem = exports.searchForItem = function searchForItem(searchText) {
+	var searchForItem = exports.searchForItem = function searchForItem(searchText, category) {
+	  console.log(category);
 	  return function (dispatch) {
-	    _superagent2.default.get(urlPath + '/search/' + searchText).end(function (err, res) {
+	    _superagent2.default.get(urlPath + '/search/' + searchText + ' ' + category).end(function (err, res) {
 	      if (err) {
 	        console.error('SearchForItem ' + err.message);
 	        return;
@@ -38944,7 +38945,7 @@
 	      { className: 'category-dropdown' },
 	      _react2.default.createElement(
 	        'select',
-	        { selected: 'All', name: 'category', onChange: function onChange(e) {
+	        { id: 'category-input', selected: 'All', name: 'category', onChange: function onChange(e) {
 	            return changeEventHandler(e, props.dispatch, props.initialListings);
 	          } },
 	        _react2.default.createElement(
@@ -38994,7 +38995,7 @@
 	}
 	
 	function search(dispatch) {
-	  dispatch((0, _actions.searchForItem)(document.getElementById('search-input').value));
+	  dispatch((0, _actions.searchForItem)(document.getElementById('search-input').value, document.getElementById('category-input').value));
 	}
 	
 	function filterList(dispatch, allListings, category) {

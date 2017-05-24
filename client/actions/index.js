@@ -192,10 +192,11 @@ export const listNewItem = (newItemData) => {
   }
 }
 
-export const searchForItem = (searchText) => {
+export const searchForItem = (searchText, category) => {
+  console.log(category)
   return (dispatch) => {
     request
-    .get(urlPath + '/search/' + searchText)
+    .get(urlPath + '/search/' + searchText + ' ' + category)
     .end((err, res) => {
       if (err) {
         console.error('SearchForItem ' + err.message)
