@@ -28,7 +28,7 @@ Lending Complete  | A way to complete loan              |       |
 Navigation        | Back button on selected components  |       |           
 Testing           | Frontend                            |       |           
 Testing           | Backend                             |       |           
-------------------|-------------------------------------|-------|-----------|
+
 ## Planning
 
 ![alt tag](https://github.com/community-sharing/Community-sharing/blob/master/pictures/Brainstorm.jpg)
