@@ -513,6 +513,16 @@ login-button-container {
   margin-bottom: 3em;
 }
 
+.back-button {
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  text-align: center;
+  border: 1px black solid;
+  border-radius: 20px;
+  width: 70%;
+  margin: 1.5em auto 1.5em;
+}
+
 /* --- LOGIN ---- */
 
 .login {
