@@ -2,7 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { HashRouter as Router, Link } from 'react-router-dom'
 
-import { fetchLenderById, borrowRequest } from '../actions'
+import { fetchLenderById } from '../actions'
+
+import { sendBorrowRequest } from './component_functions/sendBorrowRequest'
 
 class SingleItem extends React.Component {
   componentDidMount () {
@@ -38,17 +40,6 @@ class SingleItem extends React.Component {
       </div>
     )
   }
-}
-
-function sendBorrowRequest (props) {
-  var borrowerRequestDetails = {
-    borrowers_id: props.loggedInUserDetails.user_id,
-    lenders_id: props.lenderDetails.user_id,
-    item_id: props.item.item_id,
-    pickup: '2017-04-25 14:12:22',
-    dropoff: '2017-04-30 10:00:00'
-  }
-  props.dispatch(borrowRequest(borrowerRequestDetails))
 }
 
 function mapStateToProps (state) {

@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
 
-import { getNewItem } from '../api'
-import { listNewItem, updateListing } from '../actions'
+import { newItem } from './component_functions/newItem'
 
 const CLOUDINARY_UPLOAD_PRESET = 'm7lw5icy'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/hpyyiawap/image/upload'
@@ -13,7 +12,6 @@ const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/hpyyiawap/image/u
 class LenderForm extends React.Component {
   constructor (props) {
     super(props)
-
     this.state = {
       uploadedFile: null,
       uploadedFileCloudinaryUrl: ''
@@ -24,7 +22,6 @@ class LenderForm extends React.Component {
     this.setState({
       uploadedFile: files[0]
     })
-
     this.handleImageUpload(files[0])
   }
 
@@ -75,15 +72,11 @@ class LenderForm extends React.Component {
             </Dropzone>
 
             <div className='imageContainer'>
-              {
-                      this.state.uploadedFileCloudinaryUrl === ''
-                        ? null
-                        : (
-                          <div>
-                            <img className='uploadImage' src={this.state.uploadedFileCloudinaryUrl} />
-                          </div>
-                        )
-                      }
+              { this.state.uploadedFileCloudinaryUrl === '' ? null : (
+                <div>
+                  <img className='uploadImage' src={this.state.uploadedFileCloudinaryUrl} />
+                </div>
+              )}
             </div>
           </div>
 
@@ -92,31 +85,6 @@ class LenderForm extends React.Component {
         </form>
       </div>
     )
-  }
-}
-
-function newItem (event, props) {
-  event.preventDefault(event)
-  var newItemData = {
-    item_name: event.target.elements.item_name.value,
-    category: event.target.elements.category.value,
-    description: event.target.elements.description.value,
-    location: event.target.elements.location.value,
-    image_url: event.target.elements.image_url.value,
-    owner_id: event.target.elements.user_id.value,
-    available: true
-  }
-  getNewItem(testCallback, newItemData)
-  props.dispatch(listNewItem(newItemData))
-  props.dispatch(updateListing())
-  props.history.push('/dashboard')
-}
-
-function testCallback (err, status) {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log(status)
   }
 }
 
