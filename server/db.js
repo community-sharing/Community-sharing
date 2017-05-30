@@ -70,8 +70,17 @@ function saveLoan (loanRequest) {
 }
 
 function getSearchItems (searchString) {
-  let stringArray = searchString.split(' ')
-  let query = stringArray.reduce(
+  // find where the category starts in the search string
+  let index = searchString.indexOf('category=')
+  // get the category
+  let category = searchString.substr(index + 9)
+  console.log(category)
+  // split the string into search words and category
+  let stringArray = searchString.split('category=')
+  // get the indiviual search works in an array
+  let searchWords = stringArray[0].split(' ')
+  console.log(searchWords)
+  let query = searchWords.reduce(
     (query, word) => { return searchResults(query, word) },
     knex('items'))
   return query

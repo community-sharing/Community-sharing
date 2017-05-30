@@ -6,7 +6,7 @@ import ListAllItems from '../components/ListAllItems'
 import { filteredListings, searchForItem } from '../actions'
 
 function List (props) {
-  
+
   window.scrollTo(0, 0)
 
   return (

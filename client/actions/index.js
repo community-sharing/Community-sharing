@@ -196,7 +196,7 @@ export const searchForItem = (searchText, category) => {
   console.log(category)
   return (dispatch) => {
     request
-    .get(urlPath + '/search/' + searchText + ' ' + category)
+    .get(urlPath + '/search/' + searchText + 'category=' + category)
     .end((err, res) => {
       if (err) {
         console.error('SearchForItem ' + err.message)
