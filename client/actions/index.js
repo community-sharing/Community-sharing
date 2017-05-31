@@ -193,7 +193,7 @@ export const listNewItem = (newItemData) => {
 }
 
 export const searchForItem = (searchText, category) => {
-  console.log(category)
+
   return (dispatch) => {
     request
     .get(urlPath + '/search/' + searchText + 'category=' + category)
@@ -202,7 +202,12 @@ export const searchForItem = (searchText, category) => {
         console.error('SearchForItem ' + err.message)
         return
       }
-      dispatch(filteredListings(res.body))
+        res.body.map((item) => {
+          if (item.category === category || category === 'All') {
+            dispatch(filteredListings(res.body))
+          } 
+        })
+
     })
   }
 }

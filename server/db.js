@@ -74,19 +74,19 @@ function getSearchItems (searchString) {
   let index = searchString.indexOf('category=')
   // get the category
   let category = searchString.substr(index + 9)
-  console.log(category)
+  // console.log(category)
   // split the string into search words and category
   let stringArray = searchString.split('category=')
-  // get the indiviual search works in an array
+  // get the indiviual search words in an array
   let searchWords = stringArray[0].split(' ')
-  console.log(searchWords)
+  // console.log(searchWords)
   let query = searchWords.reduce(
-    (query, word) => { return searchResults(query, word) },
+    (query, word) => { return searchResults(query, word, category) },
     knex('items'))
   return query
 }
 
-function searchResults (query, searchString) {
+function searchResults (query, searchString, category) {
   let wrappedString = '%' + searchString + '%'
   return query.orWhere('item_name', 'like', wrappedString)
   .orWhere('description', 'like', wrappedString)
