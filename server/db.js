@@ -70,23 +70,14 @@ function saveLoan (loanRequest) {
 }
 
 function getSearchItems (searchString) {
-  // find where the category starts in the search string
-  let index = searchString.indexOf('category=')
-  // get the category
-  let category = searchString.substr(index + 9)
-  // console.log(category)
-  // split the string into search words and category
-  let stringArray = searchString.split('category=')
-  // get the indiviual search words in an array
-  let searchWords = stringArray[0].split(' ')
-  // console.log(searchWords)
-  let query = searchWords.reduce(
-    (query, word) => { return searchResults(query, word, category) },
+  let stringArray = searchString.split(' ')
+  let query = stringArray.reduce(
+    (query, word) => { return searchResults(query, word) },
     knex('items'))
   return query
 }
 
-function searchResults (query, searchString, category) {
+function searchResults (query, searchString) {
   let wrappedString = '%' + searchString + '%'
   return query.orWhere('item_name', 'like', wrappedString)
   .orWhere('description', 'like', wrappedString)

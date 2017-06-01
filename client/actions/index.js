@@ -193,21 +193,21 @@ export const listNewItem = (newItemData) => {
 }
 
 export const searchForItem = (searchText, category) => {
-
   return (dispatch) => {
     request
-    .get(urlPath + '/search/' + searchText + 'category=' + category)
+    .get(urlPath + '/search/' + searchText)
     .end((err, res) => {
       if (err) {
         console.error('SearchForItem ' + err.message)
         return
       }
-        res.body.map((item) => {
-          if (item.category === category || category === 'All') {
-            dispatch(filteredListings(res.body))
-          } 
-        })
-
+      res.body.map((item) => {
+        if (item.category === category || category === 'All') {
+          dispatch(filteredListings(res.body))
+        } else {
+        // Either return nothing or notification that 'no results matching search'
+        }
+      })
     })
   }
 }
