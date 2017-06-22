@@ -7,7 +7,6 @@ import { filteredListings, searchForItem } from '../actions'
 
 function List (props) {
   window.scrollTo(0, 0)
-
   return (
     <div className='List'>
       <div className='search-bar-container'>
@@ -15,6 +14,8 @@ function List (props) {
         <input id='search-input' type='text' name='search' placeholder='search...' />
         <button className='search-button' onClick={() => search(props.dispatch)}>Search</button>
       </div>
+
+      <p id='search-message'>{ props.searchFailed ? 'No results matching your search in:' : ''}</p>
 
       <div className='category-dropdown'>
         <select id='category-input' selected='All' name='category' onChange={(e) => changeEventHandler(e, props.dispatch, props.initialListings)}>
@@ -44,7 +45,8 @@ function mapStateToProps (state) {
   return {
     initialListings: state.initialListings,
     filteredListings: state.filteredListings,
-    dispatch: state.dispatch
+    dispatch: state.dispatch,
+    searchFailed: state.searchFailed
   }
 }
 

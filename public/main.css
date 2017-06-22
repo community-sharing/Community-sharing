@@ -231,6 +231,12 @@ login-button-container {
     padding: 0.3em;
 }
 
+#search-message{
+  color: red;
+  text-align: center;
+  margin: 0px;
+}
+
 .Category{
   border: 1px solid black;
   width: 50%;

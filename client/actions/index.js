@@ -67,6 +67,13 @@ export const loginFailed = loginFailed => {
   }
 }
 
+export const searchFailed = searchFailed => {
+  return {
+    type: 'SEARCH_FAILED',
+    searchFailed
+  }
+}
+
 export const loginUser = submitedEmail => {
   return dispatch => {
     request.get(urlPath + '/user/' + submitedEmail).end((err, res) => {
@@ -201,11 +208,14 @@ export const searchForItem = (searchText, category) => {
         console.error('SearchForItem ' + err.message)
         return
       }
+
+      if (res.body.length < 1) { dispatch(searchFailed(true)) }
       res.body.map((item) => {
         if (item.category === category || category === 'All') {
           dispatch(filteredListings(res.body))
+          dispatch(searchFailed(false))
         } else {
-        // Either return nothing or notification that 'no results matching search'
+          dispatch(searchFailed(true))
         }
       })
     })
