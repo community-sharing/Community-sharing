@@ -14,6 +14,7 @@ import borrowerDetails from './borrowerDetails'
 import menuVisableState from './menuVisableState'
 import isLoggedIn from './isLoggedIn'
 import loginFailed from './loginFailed'
+import searchFailed from './searchFailed'
 
 export default combineReducers({
   menuState,
@@ -29,5 +30,6 @@ export default combineReducers({
   borrowerDetails,
   menuVisableState,
   isLoggedIn,
-  loginFailed
+  loginFailed,
+  searchFailed
 })

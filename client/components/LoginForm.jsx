@@ -17,8 +17,8 @@ class Login extends React.Component {
         <form>
           <label>Email</label><br /><input id='email-input' type='text' name='email' placeholder='example@email.com' /><br />
           <label>Password</label><br /><input id='password-input' type='password' name='password' />
-            <p id='login-error-message'>{ this.props.loginFailed ? 'Login failed, please check your entered details' : ''}</p>
-            <button type='button' value='Login' onClick={() => submitUser(event, this.props)}>Login</button>
+          <p id='login-error-message'>{ this.props.loginFailed ? 'Login failed, please check your entered details' : ''}</p>
+          <button type='button' value='Login' onClick={() => submitUser(event, this.props)}>Login</button>
         </form>
         <p>No account?</p>
         <Link to='/register' className='registerLink'>
